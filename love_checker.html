@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Love Checker</title>
+	<style>
+		body {
+			background-color: #f0f0f0; 
+			transition: 0.5s; 
+		}
+		.container {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			text-align: center;
+		}
+		.result {
+			font-size: 48px; 
+			color: #000000; 
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			display: none; 
+			white-space: nowrap; 
+		}
+		.no-button {
+			position: relative;
+		}
+		.move-button {
+			animation: move-button 2s infinite;
+		}
+		@keyframes move-button {
+			0% {
+				top: 0;
+				left: 0;
+			}
+			25% {
+				top: 20px;
+				left: 20px;
+			}
+			50% {
+				top: 40px;
+				left: 40px;
+			}
+			75% {
+				top: 60px;
+				left: 60px;
+			}
+			100% {
+				top: 0;
+				left: 0;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h2 id="question">Do you still love me?</h2>
+		<button id="yes-button">Yes</button>
+		<button id="no-button">No</button>
+		<span id="heart" class="result" style="font-size: 36px;">I love you too hehe</span>
+		<span id="message" class="result" style="font-size: 36px;">Nangluod nako nimo.</span>
+	</div>
+
+	<script>
+		const yesButton = document.getElementById('yes-button');
+		const noButton = document.getElementById('no-button');
+		const heart = document.getElementById('heart');
+		const message = document.getElementById('message');
+		const question = document.getElementById('question');
+
+		yesButton.addEventListener('click', () => {
+			question.style.display = 'none';
+			yesButton.style.display = 'none';
+			noButton.style.display = 'none';
+			heart.style.display = 'block';
+			document.body.style.background = '#FFC0CB'; 
+		});
+
+		noButton.addEventListener('click', () => {
+			noButton.classList.add('move-button');
+			setTimeout(() => {
+				noButton.classList.remove('move-button');
+			}, 2000); 
+			question.style.display = 'none';
+			yesButton.style.display = 'none';
+			noButton.style.display = 'none';
+			message.style.display = 'block';
+			document.body.style.background = '#CCCCCC'; 
+		});
+	</script>
+</body>
+</html>
